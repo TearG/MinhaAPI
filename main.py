@@ -1,5 +1,7 @@
+import os
 import pandas as pd
-from flask import Flask, jsonify
+import resquests
+from flask import Flask, request, jsonify, json
 
 app = Flask(__name__)
 
@@ -10,7 +12,7 @@ def homepage():
     
 @app.route('/pegarvendas')
 def pegarvendas():
-  tabela = pd.read_csv("advertising.csv")
+  tabela = pd.read_csv('./advertising.csv')
   total_vendas = tabela['Vendas'].sum()
   resposta = {'total_vendas': total_vendas}
   return jsonify(resposta)
@@ -18,7 +20,7 @@ def pegarvendas():
 
 
 #rodar a nossa api
-app.run(host='0.0.0.0')
+app.run(host='0.0.0.0', port = 2000, debug = False)
 
 
 
