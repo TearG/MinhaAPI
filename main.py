@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-import resquests
+import requests
 from flask import Flask, request, jsonify, json
 
 app = Flask(__name__)
